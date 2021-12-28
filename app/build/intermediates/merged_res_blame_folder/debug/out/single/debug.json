@@ -1,0 +1,138 @@
+[
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_orange.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_orange.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_ic_error_white.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/ic_error_white.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/raw_mode_switcher.json.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/raw/mode_switcher.json"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/layout_fragment_splash.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/layout/fragment_splash.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_delete_dark_background.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_delete_dark_background.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_purple.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_purple.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_equal_background.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_equal_background.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_numbers_dark_background.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_numbers_dark_background.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_light_mode_background.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/light_mode_background.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_gradient_success.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/gradient_success.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/layout_fragment_home.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/font_old_standard_italic.ttf.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/font/old_standard_italic.ttf"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_dark_mode_background.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/dark_mode_background.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_gradient_info.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/gradient_info.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_transparent_purple.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_transparent_purple.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/font_old_standard_bold.ttf.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/font/old_standard_bold.ttf"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_ic_success_white.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/ic_success_white.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_gradient_error.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/gradient_error.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_error_red_icon.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/error_red_icon.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_rounded_transparent_orange.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/rounded_transparent_orange.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/font_old_standard_regular.ttf.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/font/old_standard_regular.ttf"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/drawable_ic_delete.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/res/merged/debug/navigation_main_nav_graph.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/navigation/main_nav_graph.xml"
+    }
+]

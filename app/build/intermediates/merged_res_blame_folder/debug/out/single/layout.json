@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_home.xml",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_splash.xml",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/layout/fragment_splash.xml"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/layout/activity_main.xml"
+    }
+]

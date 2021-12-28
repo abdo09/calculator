@@ -1,0 +1,69 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="ferra.solution.calculator"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml
+10
+11    <application
+11-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:5:5-20:19
+12        android:name="ferra.solution.calculator.CalculatorApp"
+12-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:6:9-38
+13        android:allowBackup="true"
+13-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:7:9-35
+14        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+14-->[androidx.core:core:1.3.2] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/472136b756987058a3f987235202ae71/core-1.3.2/AndroidManifest.xml:24:18-86
+15        android:debuggable="true"
+16        android:icon="@mipmap/ic_launcher"
+16-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:8:9-43
+17        android:label="@string/app_name"
+17-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:9:9-41
+18        android:roundIcon="@mipmap/ic_launcher_round"
+18-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:10:9-54
+19        android:supportsRtl="true"
+19-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:11:9-35
+20        android:testOnly="true"
+21        android:theme="@style/Theme.Calculator" >
+21-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:12:9-48
+22        <activity android:name="ferra.solution.calculator.ui.MainActivity" >
+22-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:13:9-19:20
+22-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:13:19-50
+23            <intent-filter>
+23-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:14:13-18:29
+24                <action android:name="android.intent.action.MAIN" />
+24-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:15:17-69
+24-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:15:25-66
+25
+26                <category android:name="android.intent.category.LAUNCHER" />
+26-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:17:17-77
+26-->/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/AndroidManifest.xml:17:27-74
+27            </intent-filter>
+28        </activity>
+29
+30        <service
+30-->[androidx.room:room-runtime:2.2.6] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/7943645a74686fb3a00ad823dfac6013/room-runtime-2.2.6/AndroidManifest.xml:25:9-28:40
+31            android:name="androidx.room.MultiInstanceInvalidationService"
+31-->[androidx.room:room-runtime:2.2.6] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/7943645a74686fb3a00ad823dfac6013/room-runtime-2.2.6/AndroidManifest.xml:26:13-74
+32            android:directBootAware="true"
+32-->[androidx.room:room-runtime:2.2.6] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/7943645a74686fb3a00ad823dfac6013/room-runtime-2.2.6/AndroidManifest.xml:27:13-43
+33            android:exported="false" />
+33-->[androidx.room:room-runtime:2.2.6] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/7943645a74686fb3a00ad823dfac6013/room-runtime-2.2.6/AndroidManifest.xml:28:13-37
+34
+35        <provider
+35-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/46accba15e0b7289bc261faba73a8747/jetified-lifecycle-process-2.0.0/AndroidManifest.xml:23:9-27:43
+36            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+36-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/46accba15e0b7289bc261faba73a8747/jetified-lifecycle-process-2.0.0/AndroidManifest.xml:24:13-79
+37            android:authorities="ferra.solution.calculator.lifecycle-process"
+37-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/46accba15e0b7289bc261faba73a8747/jetified-lifecycle-process-2.0.0/AndroidManifest.xml:25:13-69
+38            android:exported="false"
+38-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/46accba15e0b7289bc261faba73a8747/jetified-lifecycle-process-2.0.0/AndroidManifest.xml:26:13-37
+39            android:multiprocess="true" />
+39-->[androidx.lifecycle:lifecycle-process:2.0.0] /Users/abdo94/.gradle/caches/transforms-2/files-2.1/46accba15e0b7289bc261faba73a8747/jetified-lifecycle-process-2.0.0/AndroidManifest.xml:27:13-40
+40    </application>
+41
+42</manifest>
