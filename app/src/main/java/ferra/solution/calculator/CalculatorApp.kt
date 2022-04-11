@@ -10,6 +10,7 @@ import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
+import timber.log.Timber
 
 class CalculatorApp: MultiDexApplication() {
 
@@ -23,9 +24,15 @@ class CalculatorApp: MultiDexApplication() {
 
         configureKoin()
 
+        configureTimber()
+
     }
 
-
+    private fun configureTimber() {
+        //Timber used for logging
+        // Logging in Debug build, in release log only crashes
+        Timber.plant(Timber.DebugTree())
+    }
 
     private fun configureKoin() {
         startKoin {

@@ -1,23 +1,31 @@
 package ferra.solution.calculator.ui.home
 
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import ferra.solution.calculator.R
 import ferra.solution.calculator.base.BaseSupportFragment
+import ferra.solution.calculator.databinding.FragmentHomeBinding
 import ferra.solution.calculator.ui.HomeViewModel
-import ferra.solution.calculator.util.CookieBarConfig
-import kotlinx.android.synthetic.main.fragment_home.*
-import org.koin.android.viewmodel.ext.android.viewModel
-import java.lang.Exception
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-class HomeFragment : BaseSupportFragment(R.layout.fragment_home) {
+class HomeFragment : BaseSupportFragment() {
 
     override val viewModel by viewModel<HomeViewModel>()
+    private var binding: FragmentHomeBinding? = null
 
-    private var onOperationClickListener: ((Double) -> Unit)? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        return binding?.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,133 +36,175 @@ class HomeFragment : BaseSupportFragment(R.layout.fragment_home) {
 
         viewModelObserver()
 
-        val c = (3).toDouble()
     }
 
     // Handel fragment click lister
     private fun onClickListener() {
+        binding?.viewModel = viewModel
 
-        /*screenMode.setOnClickListener {
-            switchMode()
-        }*/
+        binding?.btnDelete?.setOnClickListener {
+            val sign = arrayListOf<String>()
 
-        btn_zero.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.zero)
+            viewModel.holeContainer1 =
+                viewModel.holeContainer.value?.dropLast(1)?.replace("*", " ")?.replace("÷", " ")
+                    ?.replace("-", " ")
+                    ?.replace("+", " ")
+            viewModel.holeContainer.postValue(viewModel.holeContainer.value?.dropLast(1))
+
+            viewModel.holeContainer.value?.forEach {
+                if (it == '*' || it == '÷' || it == '-' || it == '+') {
+                    sign.add(it.toString())
+                }
+            }
+
+            viewModel.holeContainer1?.split(" ")?.forEachIndexed { index, number ->
+                when {
+                    index == 0 -> {
+                        try {
+                            if (number.isNotEmpty()){
+                                viewModel.calculations = number.toDouble()
+                            } else{
+                                viewModel.calculations = 0.0
+                            }
+                        } catch (e: Exception){
+                            Timber.d(e)
+                        }
+                    }
+                    index > 0 -> {
+                        try {
+                            when (sign[index - 1]) {
+                                "*" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.multiply(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                                "÷" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.div(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                                "-" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.sub(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                                "+" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.add(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                            }
+                        } catch (e: Exception){
+                            Timber.d(e)
+                        }
+                    }
+                    else -> {
+                        viewModel.calculations = 0.0
+                    }
+                }
+            }
+            if (viewModel.calculations == 0.0 && viewModel.holeContainer1?.isEmpty() == true) {
+                viewModel.result.postValue("")
+            } else if (viewModel.calculations == 0.0 && viewModel.holeContainer1?.isNotEmpty() == true) {
+                viewModel.result.postValue(0.0.toString())
+            }else{
+                viewModel.result.postValue(viewModel.calculations.toString())
+            }
         }
-
-        btn_one.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.one)
-        }
-
-        btn_two.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.two)
-        }
-
-        btn_three.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.three)
-        }
-
-        btn_four.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.four)
-        }
-
-        btn_five.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.five)
-        }
-
-        btn_six.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.six)
-        }
-
-        btn_seven.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.seven)
-        }
-
-        btn_eight.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.eight)
-        }
-
-        btn_nine.setOnClickListener {
-            viewModel.getNumberFromTheButton(viewModel.nine)
-        }
-
-        btn_multi.setOnClickListener {
-            calculations()
-            viewModel.changeNumbersContainer(viewModel.one)
-        }
-
-        btn_division.setOnClickListener {
-            calculations()
-            viewModel.changeNumbersContainer(viewModel.two)
-        }
-
-        btn_minus.setOnClickListener {
-            calculations()
-            viewModel.changeNumbersContainer(viewModel.three)
-        }
-
-        btn_plus.setOnClickListener {
-            calculations()
-            viewModel.changeNumbersContainer(viewModel.four)
-        }
-
-        btn_equal.setOnClickListener {
-            Toast.makeText(requireContext(), viewModel.container1.value, Toast.LENGTH_SHORT).show()
-        }
-
-        btn_delete.setOnClickListener {
-
-        }
-
     }
 
     private fun viewModelObserver() {
-        viewModel.container2.observe(viewLifecycleOwner, {
-            if (viewModel.operationNumber == 0) {
-                viewModel.container1.postValue("")
-                viewModel.container1.postValue(it)
-            } else {
-                var result = 0.0
-                if (it.isNotEmpty()) {
-                    val c1 = viewModel.container1.value?.toDouble()!!
-                    var c3 = ""
-                    if (viewModel.container3.value?.isNotEmpty() == true) c3 = viewModel.container3.value?:""
-                    when (viewModel.operationNumber) {
-                        1 -> { result = if (c3.isNotEmpty()) viewModel.multiply(c3.toDouble(), it.toDouble()) else viewModel.multiply(c1, it.toDouble())}
-                        2 -> { result = if (c3.isNotEmpty()) viewModel.div(c3.toDouble(), it.toDouble()) else viewModel.div(c1, it.toDouble())}
-                        3 -> { result = if (c3.isNotEmpty()) viewModel.sub(c3.toDouble(), it.toDouble()) else viewModel.sub(c1, it.toDouble())}
-                        4 -> { result = if (c3.isNotEmpty()) viewModel.add(c3.toDouble(), it.toDouble()) else viewModel.add(c1, it.toDouble())}
-                    }
-                    viewModel.result.postValue(result.toString())
+        viewModel.holeContainer.observe(viewLifecycleOwner) { holeContainer ->
+
+            val sign = arrayListOf<String>()
+
+            viewModel.holeContainer1 = holeContainer?.replace("*", " ")?.replace("÷", " ")
+                    ?.replace("-", " ")
+                    ?.replace("+", " ")
+
+            holeContainer?.forEach {
+                if (it == '*' || it == '÷' || it == '-' || it == '+') {
+                    sign.add(it.toString())
                 }
             }
-        })
 
-        setOnLikedClickListener {
-            if (!viewModel.firstOperation) viewModel.container3.postValue(it.toString())
+            viewModel.holeContainer1?.split(" ")?.forEachIndexed { index, number ->
+                when {
+                    index == 0 -> {
+                        try {
+                            if (number.isNotEmpty()){
+                                viewModel.calculations = number.toDouble()
+                            } else{
+                                viewModel.calculations = 0.0
+                            }
+                        } catch (e: Exception){
+                            Timber.d(e)
+                        }
+                    }
+                    index > 0 -> {
+                        try {
+                            when (sign[index - 1]) {
+                                "*" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.multiply(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                                "÷" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.div(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                                "-" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.sub(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                                "+" -> {
+                                    try {
+                                        viewModel.calculations = viewModel.add(viewModel.calculations!!, number.toDouble())
+                                    } catch (e: Exception) {
+                                        Timber.d(e)
+                                    }
+                                }
+                            }
+                        } catch (e: Exception){
+                            Timber.d(e)
+                        }
+                    }
+                    else -> {
+                        viewModel.calculations = 0.0
+                    }
+                }
+            }
+            if (viewModel.calculations == 0.0 && holeContainer?.isEmpty() == true) {
+                viewModel.result.postValue("")
+            } else if (viewModel.calculations == 0.0 && holeContainer?.isNotEmpty() == true) {
+                viewModel.result.postValue(0.0.toString())
+            }else{
+                viewModel.result.postValue(viewModel.calculations.toString())
+            }
+
+            binding?.tvCalculation?.text = holeContainer.toString()
         }
 
-        viewModel.holeContainer.observe(viewLifecycleOwner, {
-            tv_calculation.text = it.toString()
-        })
-
-        viewModel.result.observe(viewLifecycleOwner, { result ->
-            tv_result.text = result.toString()
-        })
+        viewModel.result.observe(viewLifecycleOwner) { result ->
+            binding?.tvResult?.text = result.toString()
+        }
     }
-
-    // Change to the light or dark mode
-    /*private fun switchMode() {
-        if (viewModel.isDarkMode) {
-            screenMode.speed = 1F
-            screenMode.playAnimation()
-            viewModel.isDarkMode = false
-        } else {
-            screenMode.speed = -1F
-            screenMode.playAnimation()
-            viewModel.isDarkMode = true
-        }
-    }*/
 
     // Handel on back button pressed
     private fun addCallBackToExit() {
@@ -168,37 +218,14 @@ class HomeFragment : BaseSupportFragment(R.layout.fragment_home) {
             if (System.currentTimeMillis() - lastCallback < 3000) {
                 requireActivity().finish()
             } else {
-                CookieBarConfig(requireActivity()).showDefaultInfoCookie(
-                    requireContext().getString(
-                        R.string.press_back_again_to_exit
-                    )
-                )
                 lastCallback = System.currentTimeMillis()
             }
         }
     }
 
-    private fun setOnLikedClickListener(listener: (Double) -> Unit) {
-        onOperationClickListener = listener
-    }
-
-    private fun  calculations(){
-        var result = 0.0
-        val c2 = viewModel.container2.value
-        if (c2?.isNotEmpty() == true) {
-            val c1 = viewModel.container1.value?.toDouble()!!
-            var c3 = ""
-            if (viewModel.container3.value?.isNotEmpty() == true) c3 = viewModel.container3.value?:""
-            when (viewModel.operationNumber) {
-                1 -> { result = if (c3.isNotEmpty()) viewModel.multiply(c3.toDouble(), c2.toDouble()) else viewModel.multiply(c1, c2.toDouble())}
-                2 -> { result = if (c3.isNotEmpty()) viewModel.div(c3.toDouble(), c2.toDouble()) else viewModel.div(c1, c2.toDouble())}
-                3 -> { result = if (c3.isNotEmpty()) viewModel.sub(c3.toDouble(), c2.toDouble()) else viewModel.sub(c1, c2.toDouble())}
-                4 -> { result = if (c3.isNotEmpty()) viewModel.add(c3.toDouble(), c2.toDouble()) else viewModel.add(c1, c2.toDouble())}
-            }
-            onOperationClickListener?.let {
-                it(result)
-            }
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 }

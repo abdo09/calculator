@@ -1,12 +1,10 @@
 package ferra.solution.calculator.util
 
 import android.app.Activity
-import com.andrognito.flashbar.Flashbar
-import com.andrognito.flashbar.anim.FlashAnim
 import ferra.solution.calculator.R
 
 class CookieBarConfig(activity: Activity) {
-    private val enterAnimation = FlashAnim.with(activity)
+    /*private val enterAnimation = FlashAnim.with(activity)
             .animateBar()
             .duration(750)
             .alpha()
@@ -64,6 +62,6 @@ class CookieBarConfig(activity: Activity) {
                 .backgroundDrawable(R.drawable.gradient_success)
                 .message(message)
                 .show()
-    }
+    }*/
 
 }

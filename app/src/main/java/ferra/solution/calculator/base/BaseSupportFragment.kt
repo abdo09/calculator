@@ -12,13 +12,13 @@ import ferra.solution.calculator.util.CookieBarConfig
 import ferra.solution.calculator.ui.MainActivity
 
 
-abstract class BaseSupportFragment(fragment: Int) : Fragment(fragment) {
+abstract class BaseSupportFragment : Fragment() {
 
     //base viewModel for configuring info ,success, failure ,loading ,user login events
     abstract val viewModel: BaseViewModel
 
     //alert module , controlled through the base viewModel
-    private val cookieBarConfig: CookieBarConfig by lazy { CookieBarConfig(requireActivity()) }
+    //private val cookieBarConfig: CookieBarConfig by lazy { CookieBarConfig(requireActivity()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
