@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import ferra.solution.calculator.base.BaseSupportFragment
 import ferra.solution.calculator.databinding.FragmentHomeBinding
 import ferra.solution.calculator.ui.HomeViewModel
+import ferra.solution.calculator.util.formatResult
+import ferra.solution.calculator.util.listOfSigns
+import ferra.solution.calculator.util.replaceSignsWithSpace
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+import kotlin.math.sqrt
 
 class HomeFragment : BaseSupportFragment() {
 
@@ -42,99 +45,45 @@ class HomeFragment : BaseSupportFragment() {
     private fun onClickListener() {
         binding?.viewModel = viewModel
 
-        binding?.btnDelete?.setOnClickListener {
-            val sign = arrayListOf<String>()
+        binding?.btnEqual?.setOnClickListener {
+            try {
+                binding?.tvCalculation?.text = binding?.tvResult?.text
+                viewModel.holeContainer.value = binding?.tvResult?.text.toString()
+            }catch (ex: Exception){Timber.wtf(ex)}
+        }
 
-            viewModel.holeContainer1 =
-                viewModel.holeContainer.value?.dropLast(1)?.replace("*", " ")?.replace("÷", " ")
-                    ?.replace("-", " ")
-                    ?.replace("+", " ")
-            viewModel.holeContainer.postValue(viewModel.holeContainer.value?.dropLast(1))
-
-            viewModel.holeContainer.value?.forEach {
-                if (it == '*' || it == '÷' || it == '-' || it == '+') {
-                    sign.add(it.toString())
+        binding?.btnPercentage?.setOnClickListener {
+            try {
+                if (binding?.tvResult?.text.toString().isNotEmpty() && binding?.tvResult?.text.toString().toDouble() != 0.0){
+                    val percentageResult = (binding?.tvResult?.text.toString().toDouble() / 100).formatResult()
+                    binding?.tvCalculation?.text = percentageResult
+                    viewModel.holeContainer.value = percentageResult
                 }
-            }
+            }catch (ex: Exception){Timber.wtf(ex)}
+        }
 
-            viewModel.holeContainer1?.split(" ")?.forEachIndexed { index, number ->
-                when {
-                    index == 0 -> {
-                        try {
-                            if (number.isNotEmpty()){
-                                viewModel.calculations = number.toDouble()
-                            } else{
-                                viewModel.calculations = 0.0
-                            }
-                        } catch (e: Exception){
-                            Timber.d(e)
-                        }
-                    }
-                    index > 0 -> {
-                        try {
-                            when (sign[index - 1]) {
-                                "*" -> {
-                                    try {
-                                        viewModel.calculations = viewModel.multiply(viewModel.calculations!!, number.toDouble())
-                                    } catch (e: Exception) {
-                                        Timber.d(e)
-                                    }
-                                }
-                                "÷" -> {
-                                    try {
-                                        viewModel.calculations = viewModel.div(viewModel.calculations!!, number.toDouble())
-                                    } catch (e: Exception) {
-                                        Timber.d(e)
-                                    }
-                                }
-                                "-" -> {
-                                    try {
-                                        viewModel.calculations = viewModel.sub(viewModel.calculations!!, number.toDouble())
-                                    } catch (e: Exception) {
-                                        Timber.d(e)
-                                    }
-                                }
-                                "+" -> {
-                                    try {
-                                        viewModel.calculations = viewModel.add(viewModel.calculations!!, number.toDouble())
-                                    } catch (e: Exception) {
-                                        Timber.d(e)
-                                    }
-                                }
-                            }
-                        } catch (e: Exception){
-                            Timber.d(e)
-                        }
-                    }
-                    else -> {
-                        viewModel.calculations = 0.0
-                    }
-                }
-            }
-            if (viewModel.calculations == 0.0 && viewModel.holeContainer1?.isEmpty() == true) {
-                viewModel.result.postValue("")
-            } else if (viewModel.calculations == 0.0 && viewModel.holeContainer1?.isNotEmpty() == true) {
-                viewModel.result.postValue(0.0.toString())
-            }else{
-                viewModel.result.postValue(viewModel.calculations.toString())
-            }
+        binding?.btnPlusMinus?.setOnClickListener {
+            try {
+                val plusOrMinusValue = viewModel.plusOrMinus(binding?.tvResult?.text.toString()).formatResult()
+                binding?.tvCalculation?.text = plusOrMinusValue
+                viewModel.holeContainer.value = plusOrMinusValue
+            }catch (ex: Exception){Timber.wtf(ex)}
+        }
+
+        binding?.btnSqrt?.setOnClickListener {
+            try {
+                val sqrtValue = viewModel.sqrt(binding?.tvResult?.text.toString()).formatResult()
+                binding?.tvCalculation?.text = sqrtValue
+                viewModel.holeContainer.value = sqrtValue
+            }catch (ex: Exception){Timber.wtf(ex)}
         }
     }
 
     private fun viewModelObserver() {
         viewModel.holeContainer.observe(viewLifecycleOwner) { holeContainer ->
 
-            val sign = arrayListOf<String>()
-
-            viewModel.holeContainer1 = holeContainer?.replace("*", " ")?.replace("÷", " ")
-                    ?.replace("-", " ")
-                    ?.replace("+", " ")
-
-            holeContainer?.forEach {
-                if (it == '*' || it == '÷' || it == '-' || it == '+') {
-                    sign.add(it.toString())
-                }
-            }
+            viewModel.holeContainer1 = holeContainer?.replaceSignsWithSpace()
+            val sign = holeContainer?.listOfSigns()
 
             viewModel.holeContainer1?.split(" ")?.forEachIndexed { index, number ->
                 when {
@@ -151,7 +100,7 @@ class HomeFragment : BaseSupportFragment() {
                     }
                     index > 0 -> {
                         try {
-                            when (sign[index - 1]) {
+                            when (sign?.get(index - 1)) {
                                 "*" -> {
                                     try {
                                         viewModel.calculations = viewModel.multiply(viewModel.calculations!!, number.toDouble())
@@ -201,8 +150,18 @@ class HomeFragment : BaseSupportFragment() {
             binding?.tvCalculation?.text = holeContainer.toString()
         }
 
+        viewModel.clearAll.observe(viewLifecycleOwner){
+            viewModel.holeContainer1 = ""
+            viewModel.holeContainer.value = ""
+            binding?.tvResult?.text = ""
+            binding?.tvCalculation?.text = ""
+        }
+
         viewModel.result.observe(viewLifecycleOwner) { result ->
-            binding?.tvResult?.text = result.toString()
+            try {
+                if (!result.isNullOrEmpty()) binding?.tvResult?.text = result.toDouble().formatResult()
+                else binding?.tvResult?.text = ""
+            }catch (ex: Exception){Timber.wtf(ex)}
         }
     }
 

@@ -131,9 +131,6 @@ public abstract class FragmentHomeBinding extends ViewDataBinding {
   @Bindable
   protected HomeViewModel mViewModel;
 
-  @Bindable
-  protected Boolean mEventNull;
-
   protected FragmentHomeBinding(Object _bindingComponent, View _root, int _localFieldCount,
       AppCompatButton btnClear, AppCompatImageButton btnDelete, AppCompatButton btnDivision,
       AppCompatButton btnDot, AppCompatButton btnEight, AppCompatButton btnEqual,
@@ -190,13 +187,6 @@ public abstract class FragmentHomeBinding extends ViewDataBinding {
   @Nullable
   public HomeViewModel getViewModel() {
     return mViewModel;
-  }
-
-  public abstract void setEventNull(@Nullable Boolean eventNull);
-
-  @Nullable
-  public Boolean getEventNull() {
-    return mEventNull;
   }
 
   @NonNull
