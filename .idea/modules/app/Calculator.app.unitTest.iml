@@ -298,5 +298,4 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.multidex:multidex:2.0.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.airbnb.android:epoxy:4.1.0@aar" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="Calculator.app.main" />
 </module>
