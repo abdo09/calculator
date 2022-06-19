@@ -16,12 +16,12 @@
         "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/font/old_standard_bold.ttf"
     },
     {
-        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/merged_res/debug/drawable_gradient_info.xml.flat",
-        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/gradient_info.xml"
-    },
-    {
         "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/merged_res/debug/font_old_standard_regular.ttf.flat",
         "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/font/old_standard_regular.ttf"
+    },
+    {
+        "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/merged_res/debug/drawable_gradient_info.xml.flat",
+        "source": "/Users/abdo94/AndroidStudioProjects/Calculator/app/src/main/res/drawable/gradient_info.xml"
     },
     {
         "merged": "/Users/abdo94/AndroidStudioProjects/Calculator/app/build/intermediates/merged_res/debug/drawable_error_red_icon.xml.flat",
